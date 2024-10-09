@@ -2,7 +2,7 @@ const HomeModel = require('../models/HomeModel');
 
 /*HomeModel.create({
     titulo: 'Um título de teste',
-    descricao: 'Uma descrição de teste'
+    descricao: 'Uma descrição de teste final'
 }).then(dados => {
     console.log(dados);
 }).catch(e => {
@@ -10,9 +10,8 @@ const HomeModel = require('../models/HomeModel');
 });*/
 
 exports.home = function(req, res, next) {
-    console.log("Parâmetros do controller:", req.params); // Isso será impresso
     res.render('home'); // Isso renderiza a página e encerra a execução da função
-    next();
+    return;
 };
 
 

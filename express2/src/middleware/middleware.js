@@ -1,7 +1,17 @@
 module.exports = function meuMiddleware(req, res, next) {
-    req.session = { nome: 'Francisco', sobrenome: 'Paulino'}
-    console.log()
-    console.log('Passei no seu middleware global')
-    console.log()
+    next()
+}
+
+module.exports = function outroMiddleware(req, res, next) {
+    next()
+}
+
+module.exports = function checkCsrfError(err, req, res, next) {
+    if (err && 'EBADCSRFTOKEN' === err.code) {
+        return res.render('error')
+    }
+}
+
+module.exports = function csrfMiddleware(req, res, next) {
     next()
 }
