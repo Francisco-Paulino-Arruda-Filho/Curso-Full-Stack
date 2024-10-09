@@ -20,7 +20,7 @@ mongoose.connect(process.env.CONNECTIONSTRING).then(() => {
 const port = 3000;
 const meuMiddleware = require('../src/middleware/middleware')
 const checkCsrfError = require('../src/middleware/middleware');
-const srfMiddleware = require('../src/middleware/middleware');
+const csrfMiddleware = require('../src/middleware/middleware');
 const helmet = require('helmet');
 const csrf = require('csurf');
 
@@ -35,10 +35,10 @@ app.use(flash());
 app.use(express.static(path.join(__dirname, '../public')));
 app.set('views', path.join(__dirname, '../src/views'));
 app.set('view engine', 'ejs');
-app.use(csrf());
+//app.use(csrf());
 app.use(meuMiddleware);
 app.use(checkCsrfError);
-app.use(srfMiddleware);
+//app.use(srfMiddleware);
 app.use(helmet());
 
 const sessionOptions = session({
@@ -54,7 +54,13 @@ const sessionOptions = session({
   }
 });
 
-app.use(sessionOptions);
+app.use(sessionOptions);  
+
+const csrfProtection = csrf({ cookie: true });
+// Middleware para adicionar o token CSRF ao objeto `req`
+app.use(csrfProtection);
+// Adiciona o middleware CSRF
+app.use(csrfMiddleware);
 
 // Mantém o servidor ativo na porta 3000
 app.listen(port, () => {

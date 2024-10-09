@@ -13,5 +13,6 @@ module.exports = function checkCsrfError(err, req, res, next) {
 }
 
 module.exports = function csrfMiddleware(req, res, next) {
+    //res.locals.csrfToken = req.csrfToken()
     next()
 }
