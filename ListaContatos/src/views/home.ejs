@@ -1,0 +1,67 @@
+<%- include('header')  %>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-2">
+            </div>
+            <div class="col-lg-8 mt-8">
+                <h1
+                    class="text-center"
+                >
+                    Agenda
+                </h1>
+                <%- include('messages') %>
+                <div class="responsive-table">
+                    <% if(contatos.length > 0){ %>
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Nome</th>
+                                    <th scope="col">Sobrenome</th>
+                                    <th scope="col">E-mail</th>
+                                    <th scope="col">Telefone</th>
+                                    <th scope="col">Criado em:</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <% for (let i = 0; i < contatos.length; i++) { %>
+                                    <tr>
+                                        <td><%= contatos[i].nome %></td>
+                                        <td><%= contatos[i].sobrenome %></td>
+                                        <td><%= contatos[i].email %></td>
+                                        <td><%= contatos[i].telefone %></td>
+                                        <td><%= contatos[i].criadoEm %></td>
+                                        <% if(user) { %>
+                                            <td>
+                                                <a
+                                                    href="/contato/edit/<%= contatos[i]._id %>"
+                                                    class="btn btn-primary mr-2"
+                                                >
+                                                    Editar
+                                                </a>
+                                            </td>
+                                            <td>
+                                                <a
+                                                    href="/contato/delete/<%= contatos[i]._id %>"
+                                                    class="btn btn-danger"
+                                                >
+                                                    Excluir
+                                                </a>
+                                            </td>
+                                        <% } %>
+                                    </tr>
+                                <% } %>
+                            </tbody>
+                        </table>
+                    <% } else { %>
+                        <P class="text-center lead">
+                            Nenhum contato cadastrado.
+                        </P>
+                    <% } %>
+                </div>
+            </div>
+            <div class="col-lg-2"></div>
+        </div>
+    </div>
+</body>
+<%- include('footer') %>
+</html>

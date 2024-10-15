@@ -1,0 +1,18 @@
+<% if (errors && errors.length > 0) { %> <!-- Verifica se existe algum erro -->
+    <div class="col">
+        <div class="alert alert-danger">
+            <% errors.forEach(error => { %> <!-- Itera sobre o array de strings -->
+                <%= error %><br> <!-- Exibe cada erro diretamente -->
+            <% }) %>
+        </div>
+    </div>
+<% } %>
+<% if (success && success.length > 0) { %> <!-- Verifica se existe uma mensagem de sucesso -->
+    <div class="col">
+        <div class="alert alert-success">
+            <% success.forEach(msg => { %> <!-- Itera sobre o array de mensagens de sucesso -->
+                <%= msg %><br> <!-- Exibe cada mensagem de sucesso diretamente -->
+            <% }) %>
+        </div>
+    </div>
+<% } %>
