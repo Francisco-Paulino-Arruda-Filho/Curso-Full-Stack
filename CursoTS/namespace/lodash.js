@@ -1,0 +1,15 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+var lodash_1 = require("lodash");
+var arr = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+console.log(lodash_1.default.chunk(arr, 2));
+console.log(lodash_1.default.reverse(arr));
+console.log(lodash_1.default.without(arr, 1));
+console.log(lodash_1.default.shuffle(arr));
+console.log(lodash_1.default.last(arr));
+console.log(lodash_1.default.sum(arr));
+console.log(lodash_1.default.mean(arr));
+console.log(lodash_1.default.min(arr));
+console.log(lodash_1.default.max(arr));
+console.log(lodash_1.default.random(1, 100));
+console.log(lodash_1.default.random(1, 100));
