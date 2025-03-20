@@ -1,0 +1,11 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+var CustomerBudget_1 = require("./CustomerBudget");
+var DirectorBudgetCustomer_1 = require("./DirectorBudgetCustomer");
+var ManagerBudgetCustomer_1 = require("./ManagerBudgetCustomer");
+var SellerBudgetHandler_1 = require("./SellerBudgetHandler");
+var customerBudget = new CustomerBudget_1.CustomerBudget(10);
+var seller = new SellerBudgetHandler_1.SellerBudgetHandler();
+seller.setNextHandler(new ManagerBudgetCustomer_1.ManagerBudgetCustomer());
+seller.setNextHandler(new DirectorBudgetCustomer_1.DirectorBudgetCustomer());
+seller.setNextHandler(new SellerBudgetHandler_1.SellerBudgetHandler());

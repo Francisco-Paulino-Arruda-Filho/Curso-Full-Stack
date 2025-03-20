@@ -1,0 +1,15 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+var Mediator_1 = require("./Mediator");
+var Seller_1 = require("./Seller");
+var mediator = new Mediator_1.Mediator();
+var seller1 = new Seller_1.Seller([{ id: '1', name: 'Product 1', price: 100 }], mediator);
+seller1.addProduct({ id: '3', name: 'Product 3', price: 300 });
+seller1.showProducts();
+var seller2 = new Seller_1.Seller([{ id: '2', name: 'Product 2', price: 200 }], mediator);
+seller2.showProducts();
+mediator.addSeller(seller1);
+mediator.addSeller(seller2);
+mediator.buyProduct('1');
+seller1.showProducts();
+seller2.showProducts();
